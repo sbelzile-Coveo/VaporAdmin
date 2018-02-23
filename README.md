@@ -4,15 +4,22 @@ Build on top of [React-Vapor](https://github.com/coveo/react-vapor), handles the
 
 ## Usage
 
-## Register a sub-application
+### Register a sub-application
 
 ```typescript
 Vapor.Application.registerApp("Section1", "App1", { routeOptions: { path: "/", component: () => <div/> }});
 ```
 
-## Initialize
+### Initialize
 ```typescript
 document.addEventListener('DOMContentLoaded', function() {
     Vapor.Application.init(document.getElementById("app"));
 });
 ```
+
+## Build
+npm run build
+
+## Demo
+npm run build
+./dist/index.html
