@@ -1,0 +1,52 @@
+{
+  "name": "vapor-admin",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "./node_modules/.bin/karma start --single-run",
+    "test:watch": "karma start",
+    "test:browser": "karma start --browsers=Chrome"
+  },
+  "author": "sbelzile",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-vapor": "^1.15.7"
+  },
+  "devDependencies": {
+    "@types/jasmine": "2.8.6",
+    "@types/react": "^16.0.38",
+    "@types/react-dom": "^16.0.4",
+    "@types/react-redux": "^5.0.15",
+    "@types/react-router": "^4.0.22",
+    "@types/react-router-dom": "^4.2.4",
+    "coveo-styleguide": "^2.3.1",
+    "html-webpack-plugin": "^2.30.1",
+    "istanbul-instrumenter-loader": "3.0.0",
+    "jasmine": "2.8.0",
+    "jasmine-core": "2.8.0",
+    "karma": "2.0.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage-istanbul-reporter": "1.4.1",
+    "karma-jasmine": "1.1.1",
+    "karma-junit-reporter": "1.2.0",
+    "karma-spec-reporter": "0.0.32",
+    "karma-typescript": "3.0.12",
+    "karma-webpack": "2.0.9",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-vapor": "^1.15.7",
+    "ts-loader": "3.5.0",
+    "typescript": "2.7.2",
+    "webpack": "3.11.0"
+  }
+}
