@@ -10,6 +10,12 @@ Build on top of [React-Vapor](https://github.com/coveo/react-vapor), handles the
 Vapor.Application.registerApp("Section1", "App1", { routeOptions: { path: "/", component: () => <div/> }});
 ```
 
+### Register an header section
+
+```typescript
+Vapor.Application.registerHeaderSection("logo", { render: CoveoLogoHeaderSection});
+```
+
 ### Initialize
 ```typescript
 document.addEventListener('DOMContentLoaded', function() {

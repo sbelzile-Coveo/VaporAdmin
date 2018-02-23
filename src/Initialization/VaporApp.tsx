@@ -3,26 +3,40 @@ import { VaporFrame } from "../Index";
 import { SideNavigation } from "react-vapor";
 import { NavigationSection } from "../Navigation/NavigationSection";
 import { NavigationMenuSectionNavLink } from "../Navigation/NavigationMenuNavLink";
-import { IAppOptions } from "./Initialization";
+import { IAppOptions, IHeaderSectionOption } from "./Initialization";
 import { Switch, Route, RouteProps } from "react-router";
 import { HashRouter } from "react-router-dom";
+import { VaporHeader } from "../Views/VaporHeader";
 
 export interface IVaporAppProps {
     sections: { [id: string]: string[] },
-    apps: { [id: string]: IAppOptions }
+    apps: { [id: string]: IAppOptions },
+    header: { [id: string]: IHeaderSectionOption }
 }
 
 export class VaporApp extends React.Component<IVaporAppProps> {
     render() {
         return (
             <HashRouter>
-                <VaporFrame navigation={this.buildNavigation()}>
+                <VaporFrame navigation={this.buildNavigation()} header={this.buildHeader()}>
                     <Switch>
                         {this.buildRoutes()}
                     </Switch>
                 </VaporFrame>
             </HashRouter>
         );
+    }
+
+    private buildHeader() {
+        const headerKeys = Object.keys(this.props.header);
+        const sections = headerKeys.map(id => this.props.header[id].render());
+        return headerKeys.length > 0
+            ? (
+                <VaporHeader>
+                    {sections}
+                </VaporHeader>
+            )
+            : null;
     }
 
     private buildRoutes(): JSX.Element[] {
@@ -39,7 +53,7 @@ export class VaporApp extends React.Component<IVaporAppProps> {
         );
     }
 
-    buildSection(sectionId: string) {
+    private buildSection(sectionId: string) {
         const apps = this.props.sections[sectionId].map(appId => this.buildApp(appId));
         return (
             <NavigationSection key={sectionId} title={sectionId}>
@@ -48,10 +62,10 @@ export class VaporApp extends React.Component<IVaporAppProps> {
         );
     }
 
-    buildApp(appId: string) {
+    private buildApp(appId: string) {
         const app = this.props.apps[appId];
         return (
-            <NavigationMenuSectionNavLink key={appId} route={app.routeOptions.path} title={appId} />
+            <NavigationMenuSectionNavLink key={appId} route={app.routeOptions.path} exact={app.routeOptions.exact} title={appId} />
         )
     }
 }

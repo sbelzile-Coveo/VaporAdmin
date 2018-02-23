@@ -7,20 +7,27 @@ export interface IAppOptions {
     routeOptions: RouteProps;
 }
 
+export interface IHeaderSectionOption {
+    render: () => JSX.Element
+}
+
 export class MainApplication {
     private sections: { [id: string]: string[] }
     private apps: { [id: string]: IAppOptions }
+    private header: { [id: string]: IHeaderSectionOption }
 
     constructor() {
         this.sections = {};
         this.apps = {};
+        this.header = {};
     }
 
     init(root: HTMLElement) {
         ReactDOM.render(
             React.createElement(VaporApp, {
                 sections: this.sections,
-                apps: this.apps
+                apps: this.apps,
+                header: this.header
             }),
             root
         );
@@ -29,6 +36,10 @@ export class MainApplication {
     registerApp(sectionId: string, appId: string, options: IAppOptions) {
         this.addAppToSection(sectionId, appId);
         this.apps[appId] = options;
+    }
+
+    registerHeaderSection(id: string, options: IHeaderSectionOption) {
+        this.header[id] = options;
     }
 
     private addAppToSection(sectionId: string, appId) {
