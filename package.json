@@ -2,7 +2,13 @@
   "name": "vapor-admin",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/vapor.js",
+  "types": "dist/src/Index.d.ts",
+  "homepage": "https://github.com/sbelzile-Coveo/VaporAdmin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbelzile-Coveo/VaporAdmin.git"
+  },
   "scripts": {
     "build": "webpack",
     "test": "./node_modules/.bin/karma start --single-run",
