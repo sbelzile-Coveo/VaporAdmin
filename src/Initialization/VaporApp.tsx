@@ -41,7 +41,7 @@ export class VaporApp extends React.Component<IVaporAppProps> {
 
     private buildRoutes(): JSX.Element[] {
         return Object.keys(this.props.apps)
-            .map(appId => <Route key={appId} {...this.props.apps[appId].routeOptions} />);
+            .map(appId => <Route key={appId} {...this.props.apps[appId].routeOptions} path={`/${this.props.apps[appId].routeOptions.path}`} />);
     }
 
     private buildNavigation(): JSX.Element {
