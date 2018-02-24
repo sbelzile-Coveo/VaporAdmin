@@ -4,7 +4,6 @@ const html = require('html-webpack-plugin');
 const minimize = process.argv.indexOf("--optimize-minimize") !== -1;
 
 var plugins = [
-  new webpack.optimize.CommonsChunkPlugin({name: 'common', filename: "common.js"}),
   new html({
     template: './templates/template.ejs',
     inject: "head"

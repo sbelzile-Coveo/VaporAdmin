@@ -1,6 +1,6 @@
 {
   "name": "vapor-admin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/vapor.js",
   "types": "dist/src/Index.d.ts",
