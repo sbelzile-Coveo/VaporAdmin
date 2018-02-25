@@ -1,5 +1,5 @@
 import * as React from "react";
-import { VaporApp, IVaporAppProps } from '../../src/Initialization/VaporApp';
+import { VaporApp, IVaporAppProps } from '../../src/Application/VaporApp';
 import { shallow, ReactWrapper, mount } from "enzyme";
 import { NavigationSection } from '../../src/Navigation/NavigationSection';
 import { NavigationMenuSectionNavLink } from '../../src/Navigation/NavigationMenuNavLink';
