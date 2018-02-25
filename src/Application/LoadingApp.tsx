@@ -14,9 +14,9 @@ export class LoadingApp extends React.Component<IVaporAppProps, any> {
             </SideNavigation>
         );
 
-        const header = Object.keys(this.props.header).length > 0 
+        const header = Object.keys(this.props.header).length > 0
             ? <VaporHeader />
-            : null; 
+            : null;
 
         return (
             <VaporFrame navigation={navigation} header={header}>
