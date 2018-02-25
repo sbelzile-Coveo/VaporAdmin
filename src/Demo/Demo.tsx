@@ -13,4 +13,11 @@ export const initDemo = (app: Application) => {
     app.registerApp("Section1", "App3", { routeOptions: { path: "app3", component: () => <div>App 3</div> }, hidden: true } );
     app.registerApp("Section2", "App4", { routeOptions: { path: "app4", component: () => <div>App 4</div> }} );
     app.registerApp("Section2", "OutsideLink", { href: "http://coveo.com" } );
+    app.beforeRendering = () => {
+        return new Promise<void>((resolve, reject) => {
+            window.setTimeout(() => {
+                resolve();
+            }, 2000);
+        });
+    }
 }

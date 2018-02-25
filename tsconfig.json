@@ -5,5 +5,10 @@
         "sourceMap": true,
         "declaration": true,
         "jsx": "react",
+        "lib": [
+            "dom",
+            "es5",
+            "es2015.promise"
+        ],
     }
 }
