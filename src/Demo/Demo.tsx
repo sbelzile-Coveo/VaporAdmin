@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Application } from '../Initialization/Initialization';
+import { Application } from '../Application/Application';
 import { CoveoLogoHeaderSection } from "./CoveoLogoHeaderSection";
 import { VaporHeaderSection } from "./VaporHeaderSection";
 import { Spacer } from "./Spacer";

@@ -4,7 +4,7 @@ import { SideNavigation } from "react-vapor";
 import { NavigationSection } from "../Navigation/NavigationSection";
 import { NavigationMenuSectionNavLink } from "../Navigation/NavigationMenuNavLink";
 import { NavigationMenuSectionItem } from "../Navigation/NavigationMenuSectionItem";
-import { IAppOptions, IHeaderSectionOption } from "./Initialization";
+import { IAppOptions, IHeaderSectionOption } from "./Application";
 import { Switch, Route, RouteProps } from "react-router";
 import { HashRouter } from "react-router-dom";
 import { VaporHeader } from "../Views/VaporHeader";
