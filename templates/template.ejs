@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="https://static.cloud.coveo.com/styleguide/v2.3.1/css/CoveoStyleGuide.css"/>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            Vapor.initDemo();
-            Vapor.Application.init(document.getElementById("app"));
+            var app = new Vapor.Application();
+            Vapor.initDemo(app);
+            app.init(document.getElementById("app"));
         })
     </script>
   </head>

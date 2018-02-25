@@ -4,14 +4,25 @@ import { VaporApp } from "./VaporApp";
 import { RouteProps } from "react-router";
 
 export interface IAppOptions {
-    routeOptions: RouteProps;
+    /**
+     * React-Router route props options.
+     */
+    routeOptions?: RouteProps;
+    /**
+     * Alternative to routeOptions, will render an anchor tag in the side navigation.
+     */
+    href?: string;
+    /**
+     * Whether the route is hidden or not.
+     */
+    hidden?: boolean;
 }
 
 export interface IHeaderSectionOption {
     render: () => JSX.Element
 }
 
-export class MainApplication {
+export class Application {
     private sections: { [id: string]: string[] }
     private apps: { [id: string]: IAppOptions }
     private header: { [id: string]: IHeaderSectionOption }
@@ -51,5 +62,3 @@ export class MainApplication {
         }
     }
 }
-
-export const Application = new MainApplication();

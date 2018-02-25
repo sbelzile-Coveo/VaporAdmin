@@ -2,13 +2,14 @@ const webpackConfig = require("./webpack.config.tests.js");
 
 var configuration = {
     frameworks: ["jasmine"],
-    files: [
-        { pattern: "tests/**/*.ts" }
-    ],
     preprocessors: {
-        "src/**/*.ts": ["webpack"],
-        "tests/**/*.ts": ["webpack"],
+        "tests/Entry.spec.ts": ["webpack"],
     },
+
+    files: [
+        'tests/Entry.spec.ts'
+    ],
+
     mime: {
         'text/x-typescript': ['ts', 'tsx'],
     },
