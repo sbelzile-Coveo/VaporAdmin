@@ -1,10 +1,11 @@
 import * as React from "react";
-import { VaporApp, IVaporAppProps } from '../../src/Application/VaporApp';
+import { VaporApp } from '../../src/Application/VaporApp';
 import { shallow, ReactWrapper, mount } from "enzyme";
 import { NavigationSection } from '../../src/Navigation/NavigationSection';
 import { NavigationMenuSectionNavLink } from '../../src/Navigation/NavigationMenuNavLink';
 import { Route } from 'react-router';
 import { NavigationMenuSectionItem } from "../../src/Navigation/NavigationMenuSectionItem";
+import { IMainAppOptions } from "../../src/Application/Application";
 
 describe("VaporApp", () => {
     it('should render without errors', () => {
@@ -14,7 +15,7 @@ describe("VaporApp", () => {
     });
 
     describe("<VaporApp/>", () => {
-        let app: ReactWrapper<IVaporAppProps, any>;
+        let app: ReactWrapper<IMainAppOptions, any>;
         let component: VaporApp;
 
         let props = {

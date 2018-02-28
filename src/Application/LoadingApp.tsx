@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { SideNavigation, SideNavigationMenuSection, SideNavigationLoadingItem, Loading } from 'react-vapor';
 import { VaporFrame } from '../Views/VaporFrame';
-import { IVaporAppProps } from './VaporApp';
 import { VaporHeader } from '../Views/VaporHeader';
+import { IMainAppOptions } from './Application';
 
-export class LoadingApp extends React.Component<IVaporAppProps, any> {
+export class LoadingApp extends React.Component<IMainAppOptions, any> {
     render() {
         const sections = Object.keys(this.props.sections)
             .map(key => this.buildSection(key));

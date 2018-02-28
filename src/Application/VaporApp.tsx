@@ -4,18 +4,13 @@ import { SideNavigation } from "react-vapor";
 import { NavigationSection } from "../Navigation/NavigationSection";
 import { NavigationMenuSectionNavLink } from "../Navigation/NavigationMenuNavLink";
 import { NavigationMenuSectionItem } from "../Navigation/NavigationMenuSectionItem";
-import { IAppOptions, IHeaderSectionOption } from "./Application";
+import { IAppOptions, IHeaderSectionOption, IMainAppOptions } from './Application';
 import { Switch, Route, RouteProps } from "react-router";
 import { HashRouter } from "react-router-dom";
 import { VaporHeader } from "../Views/VaporHeader";
+import { PrivateRoute } from './PrivateRoute';
 
-export interface IVaporAppProps {
-    sections: { [id: string]: string[] },
-    apps: { [id: string]: IAppOptions },
-    header: { [id: string]: IHeaderSectionOption }
-}
-
-export class VaporApp extends React.Component<IVaporAppProps> {
+export class VaporApp extends React.Component<IMainAppOptions> {
     render() {
         return (
             <HashRouter>
@@ -43,7 +38,13 @@ export class VaporApp extends React.Component<IVaporAppProps> {
     private buildRoutes(): JSX.Element[] {
         return Object.keys(this.props.apps)
             .filter(appId => !!this.props.apps[appId].routeOptions)
-            .map(appId => <Route key={appId} {...this.props.apps[appId].routeOptions} path={`/${this.props.apps[appId].routeOptions.path}`} />);
+            .map(appId => this.buildRoute(appId));
+    }
+
+    private buildRoute(appId: string) {
+        return !!this.props.apps[appId].isPrivate
+            ? <PrivateRoute key={appId} app={this.props.apps[appId]} isAuthenticated={this.props.isAuthenticated} />
+            : <Route key={appId} {...this.props.apps[appId].routeOptions} path={`/${this.props.apps[appId].routeOptions.path}`} />;
     }
 
     private buildNavigation(): JSX.Element {

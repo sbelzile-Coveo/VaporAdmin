@@ -17,6 +17,10 @@ export interface IAppOptions {
      * Whether the route is hidden or not.
      */
     hidden?: boolean;
+    /**
+     * Whether the route is protected by authentication.
+     */
+    isPrivate?: boolean;
 }
 
 export interface IHeaderSectionOption {
@@ -27,20 +31,23 @@ export interface IMainAppOptions {
     sections: { [id: string]: string[] };
     apps: { [id: string]: IAppOptions };
     header: { [id: string]: IHeaderSectionOption },
-    beforeRendering: () => Promise<any>,
+    beforeRendering?: () => Promise<any>,
+    isAuthenticated?: () => boolean,
 }
 
 export class Application {
     private sections: { [id: string]: string[] }
     private apps: { [id: string]: IAppOptions }
     private header: { [id: string]: IHeaderSectionOption }
-    public beforeRendering: () => Promise<any>
+    public beforeRendering: () => Promise<any>;
+    public isAuthenticated: () => boolean;
 
-    constructor(options?: IMainAppOptions) {
+    constructor(private options?: IMainAppOptions) {
         this.sections = options && options.sections ? options.sections : {};
         this.apps = options && options.apps ? options.apps : {};
         this.header = options && options.header ? options.header : {};
         this.beforeRendering = options && options.beforeRendering ? options.beforeRendering : () => Promise.resolve();
+        this.isAuthenticated = options && options.isAuthenticated ? options.isAuthenticated : () => true;
     }
 
     init(root: HTMLElement) {
@@ -78,7 +85,8 @@ export class Application {
             React.createElement(VaporApp, {
                 sections: this.sections,
                 apps: this.apps,
-                header: this.header
+                header: this.header,
+                isAuthenticated: this.isAuthenticated
             }),
             root
         );
