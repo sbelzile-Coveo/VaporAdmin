@@ -1,6 +1,6 @@
 {
   "name": "vapor-admin",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/vapor.js",
   "types": "dist/src/Index.d.ts",
@@ -23,7 +23,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-vapor": "^1.15.7"
+    "react-vapor": "^1.16.3"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.9",
@@ -35,7 +35,7 @@
     "@types/react-router-dom": "^4.2.4",
     "@types/webpack-env": "^1.13.5",
     "connect": "^3.6.6",
-    "coveo-styleguide": "^2.3.1",
+    "coveo-styleguide": "^2.3.4",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "html-webpack-plugin": "^2.30.1",
@@ -55,7 +55,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-vapor": "^1.15.7",
+    "react-vapor": "^1.16.3",
     "serve-static": "^1.13.2",
     "ts-loader": "3.5.0",
     "typescript": "2.7.2",
