@@ -10,6 +10,11 @@ export interface IAppOptions {
      */
     routeOptions?: RouteProps;
     /**
+     * If true, will render a navlink in the left menu, but no Route component in the main app.
+     * The purpose of this option is to redirect to a standalone app from the main navigation menu.
+     */
+    noRender?: boolean;
+    /**
      * Alternative to routeOptions, will render an anchor tag in the side navigation.
      */
     href?: string;
@@ -28,9 +33,10 @@ export interface IHeaderSectionOption {
 }
 
 export interface IMainAppOptions {
-    sections: { [id: string]: string[] };
-    apps: { [id: string]: IAppOptions };
-    header: { [id: string]: IHeaderSectionOption },
+    sections?: { [id: string]: string[] };
+    apps?: { [id: string]: IAppOptions };
+    standaloneApps?: { [id: string]: IAppOptions };
+    header?: { [id: string]: IHeaderSectionOption },
     beforeRendering?: () => Promise<any>,
     isAuthenticated?: () => boolean,
 }
@@ -38,6 +44,7 @@ export interface IMainAppOptions {
 export class Application {
     private sections: { [id: string]: string[] }
     private apps: { [id: string]: IAppOptions }
+    private standaloneApps: { [id: string]: IAppOptions }
     private header: { [id: string]: IHeaderSectionOption }
     public beforeRendering: () => Promise<any>;
     public isAuthenticated: () => boolean;
@@ -45,6 +52,7 @@ export class Application {
     constructor(private options?: IMainAppOptions) {
         this.sections = options && options.sections ? options.sections : {};
         this.apps = options && options.apps ? options.apps : {};
+        this.standaloneApps = options && options.standaloneApps ? options.standaloneApps : {};
         this.header = options && options.header ? options.header : {};
         this.beforeRendering = options && options.beforeRendering ? options.beforeRendering : () => Promise.resolve();
         this.isAuthenticated = options && options.isAuthenticated ? options.isAuthenticated : () => true;
@@ -63,6 +71,10 @@ export class Application {
     registerApp(sectionId: string, appId: string, options: IAppOptions) {
         this.addAppToSection(sectionId, appId);
         this.apps[appId] = options;
+    }
+
+    registerStandaloneApp(appId: string, options: IAppOptions) {
+        this.standaloneApps[appId] = options;
     }
 
     registerHeaderSection(id: string, options: IHeaderSectionOption) {
@@ -85,6 +97,7 @@ export class Application {
             React.createElement(VaporApp, {
                 sections: this.sections,
                 apps: this.apps,
+                standaloneApps: this.standaloneApps,
                 header: this.header,
                 isAuthenticated: this.isAuthenticated
             }),

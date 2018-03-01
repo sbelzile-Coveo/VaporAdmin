@@ -35,8 +35,9 @@ describe("VaporApp", () => {
                     href: "http://coveo.com"
                 }
             },
+            standaloneApps: {},
             header: {}
-        }
+        } as IMainAppOptions;
 
         beforeEach(() => {
             app = mount(
