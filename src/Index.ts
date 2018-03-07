@@ -4,3 +4,4 @@ export { VaporFrame } from "./Views/VaporFrame";
 
 export { Application } from "./Application/Application";
 export { initDemo } from "./Demo/Demo";
+export { Dependencies } from './Decorators/Dependencies';
